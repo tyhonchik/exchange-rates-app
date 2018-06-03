@@ -5,14 +5,12 @@ import { Route } from 'react-router-dom'
 import Home from "./containers/Content/Home";
 import Info from "./containers/Content/Info";
 
-
 class App extends Component {
   render() {
-
     return (
       <Aux>
         <Route exact path="/" component={Home} />
-        <Route path="/info" component={Info} />
+        <Route path="/info/:id?" component={Info} />
       </Aux>
     );
   }

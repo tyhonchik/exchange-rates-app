@@ -1,28 +1,6 @@
-import React, { Component } from "react";
-import Aux from "../../hoc/Aux";
-import CurrencyInfo from "../../components/Currencies/CurrencyInfo";
-import Navbar from "../../components/Navbar/Navbar";
 import { connect } from "react-redux";
-import { fetchCurrencies, fetchCurrenciesFailure, fetchCurrenciesSuccess } from "../.././store/actions/actions";
-
-class Info extends Component {
-    componentDidMount() {
-        this.props.fetchData();
-    }
-
-    render() {
-        return (
-            <Aux>
-                <header>
-                    <Navbar pageType="info" {...this.props}/>
-                </header>
-                <main>
-                    <CurrencyInfo {...this.props} />
-                </main>
-            </Aux>
-        )
-    }
-}
+import { fetchCurrencies, fetchCurrenciesFailure, fetchCurrenciesSuccess } from "../../../store/actions/actions";
+import CurrencyList from './CurrencyList';
 
 const mapStateToProps = (state) => {
     return {
@@ -33,6 +11,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+    const out = dispatch(fetchCurrencies());
+    console.log(out);
     return {
         fetchData: () => dispatch(fetchCurrencies()).payload
             .then((response) => {
@@ -48,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Info);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencyList);

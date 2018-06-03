@@ -23,6 +23,7 @@ export const RESET_DELETED_CURRENCY = 'RESET_DELETED_CURRENCY';
 
 const PROXY_URL = "https://cors2-fearless-parrot.eu-gb.mybluemix.net/";    // IBM Bluemix
 const CURRENCY_LIST_URL = "cash.rbc.ru/cash/json/cash_currencies/";
+const CURRENCY_ITEM_URL = "cash.rbc.ru/cash/json/cash_rates/?city=1&currency=";
 
 export function fetchCurrencies() {
   const request = fetch(PROXY_URL + CURRENCY_LIST_URL, {
@@ -31,7 +32,7 @@ export function fetchCurrencies() {
       "Content-Type": "application/json"
     }
   });
-console.log(request);
+  
   return {
     type: FETCH_CURRENCIES,
     payload: request
@@ -53,19 +54,51 @@ export function fetchCurrenciesFailure(error) {
 }
 
 
+export function fetchCurrency(id) {
+  const request = fetch(PROXY_URL + CURRENCY_ITEM_URL + id, {
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+      "Content-Type": "application/json"
+    }
+  });
+  
+  return {
+    type: FETCH_CURRENCY,
+    payload: request
+  };
+}
+
+export function fetchCurrencySuccess(currency) {
+  return {
+    type: FETCH_CURRENCY_SUCCESS,
+    payload: currency
+  };
+}
+
+export function fetchCurrencyFailure(error) {
+  return {
+    type: FETCH_CURRENCY_FAILURE,
+    payload: error
+  };
+}
+
+export function resetActiveCurrency() {
+  return {
+    type: RESET_ACTIVE_CURRENCY
+  }
+}
 
 
+export function addCurrency(currency) {
+  return {
+    type: ADD_CURRENCY,
+    payload: currency
+  };
+}
 
-
-
-  //     .then(response => {
-    //       if (!response.ok) {
-    //         throw Error(response.statusText);
-    //       }
-    //       dispatch(currenciesIsLoading(false));
-    //       return response;
-    //     })
-    //     .then(response => response.json())
-    //     .then(items => dispatch(fetchCurrenciesSuccess(items)))
-    //     .catch(() => dispatch(fetchCurrenciesError(true)));
-    // };
+export function removeCurrency(id) {
+  return {
+    type: DELETE_CURRENCY,
+    payload: id
+  };
+}
