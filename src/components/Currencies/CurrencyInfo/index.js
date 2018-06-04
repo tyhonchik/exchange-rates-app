@@ -14,6 +14,7 @@ const mapStateToProps = (globalState, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+
         resetMe: () => {
             dispatch(resetActiveCurrency());
         }

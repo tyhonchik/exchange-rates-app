@@ -3,13 +3,6 @@ import CurrencyListItem from "./CurrencyListItem";
 import { NonIdealState } from "@blueprintjs/core";
 import AddBlock from '../../Navbar/AddBlock';
 
-const listStyles = {
-  margin: "0",
-  padding: "0",
-  display: "grid",
-  gridGap: "1px",
-  grid: "repeat(5, 15rem) / repeat(5, 15rem)"
-};
 
 class CurrencyList extends Component {
   render() {
@@ -29,10 +22,10 @@ class CurrencyList extends Component {
         />
       );
     }
-
+    
     return (
       <div style={{ width: "47vw", margin: "55px auto" }}>
-        <div style={listStyles}>
+        <div className="currencyList"> 
           {this.props.myCurrencies.currencies.map(item => (
             <CurrencyListItem
               key={item.id}

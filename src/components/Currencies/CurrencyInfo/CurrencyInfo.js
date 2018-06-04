@@ -14,19 +14,21 @@ class CurrencyInfo extends PureComponent {
     this.props.resetMe();
   }
 
-  render() {
-    Date.prototype.timeNow = function() {
-      return (
-        (this.getHours() < 10 ? "0" : "") +
+  getTime() {
+    Date.prototype.timeNow = function () {
+      return ((this.getHours() < 10 ? "0" : "") +
         this.getHours() +
         ":" +
         (this.getMinutes() < 10 ? "0" : "") +
         this.getMinutes() +
         ":" +
         (this.getSeconds() < 10 ? "0" : "") +
-        this.getSeconds()
-      );
+        this.getSeconds());
     };
+  }
+
+  render() {
+    this.getTime();
 
     const { currency, loading, error } = this.props.activeCurrency;
 
@@ -67,7 +69,7 @@ class CurrencyInfo extends PureComponent {
             style={{ marginTop: "80px" }}
             title="Запрашиваемой Вами валюты нет  ¯\_(ツ)_/¯"
             visual="heart-broken"
-          className="NonIdealState"
+            className="NonIdealState"
           />
         );
       }
@@ -109,21 +111,42 @@ class CurrencyInfo extends PureComponent {
               isKey
               dataField="name"
               tdStyle={{ whiteSpace: "normal" }}
+              width="230px"
             >
               Наименование
             </TableHeaderColumn>
-            <TableHeaderColumn dataField="rateBuy">Покупка</TableHeaderColumn>
-            <TableHeaderColumn dataField="rateSell">Продажа</TableHeaderColumn>
-            <TableHeaderColumn dataField="pubTime">
+            <TableHeaderColumn dataField="rateBuy" width="120">
+              Покупка
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="rateSell" width="120">
+              Продажа
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="pubTime" width="120">
               Дата обновления
             </TableHeaderColumn>
-            <TableHeaderColumn dataField="phone">Телефон</TableHeaderColumn>
+            <TableHeaderColumn dataField="phone" width="150">
+              Телефон
+            </TableHeaderColumn>
             <TableHeaderColumn
               dataField="metro"
               tdStyle={{ whiteSpace: "normal" }}
+              width="180"
             >
               Метро
             </TableHeaderColumn>
+          </BootstrapTable>
+        );
+      } else {
+        table = (
+          <BootstrapTable striped hover options={{ noDataText: "Список курсов пуст.\r\n Ждем обновления информации от источника 🤞" }}>
+            <TableHeaderColumn isKey dataField="name">
+              Наименование
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="">Покупка</TableHeaderColumn>
+            <TableHeaderColumn dataField="">Продажа</TableHeaderColumn>
+            <TableHeaderColumn dataField="">Дата обновления</TableHeaderColumn>
+            <TableHeaderColumn dataField="">Телефон</TableHeaderColumn>
+            <TableHeaderColumn dataField="">Метро</TableHeaderColumn>
           </BootstrapTable>
         );
       }
@@ -189,6 +212,8 @@ class CurrencyInfo extends PureComponent {
       </Aux>
     );
   }
+
+  
 }
 
 export default CurrencyInfo;

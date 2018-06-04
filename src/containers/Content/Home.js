@@ -9,7 +9,7 @@ class Home extends Component {
         return (
             <Aux>
                 <header>
-                    <Navbar pageType="home"/>
+                    <Navbar pageType="home" {...this.props}/>
                 </header>
                 <main>
                     <CurrencyList />

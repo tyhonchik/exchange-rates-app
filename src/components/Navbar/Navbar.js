@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import AddBlock from "./AddBlock";
 import DeleteBlock from "./DeleteBlock";
-import Aux from '../../hoc';
+import Aux from "../../hoc";
 import { connect } from "react-redux";
 import {
   fetchCurrencies,
@@ -15,13 +15,22 @@ import {
   Alignment,
   NavbarGroup,
   NavbarHeading,
-  Button
+  Button,
+  Tooltip
 } from "@blueprintjs/core";
 
 class Nav extends PureComponent {
   componentDidMount() {
     this.props.fetchData();
+    console.log(this.props)
+    
   }
+
+  renderRedirect = () => {
+    console.log(this.props);
+    localStorage.clear();
+    return this.props.history.go(`/`);
+  };
 
   render() {
     let nav = null;
@@ -32,11 +41,21 @@ class Nav extends PureComponent {
           <Navbar>
             <NavbarGroup align={Alignment.LEFT}>
               <NavbarHeading>Мои валюты</NavbarHeading>
+              <Tooltip
+                content="Очистить loacalStorage"
+              >
+                <Button onClick={this.renderRedirect} minimal="true" icon="trash"/>
+              </Tooltip>
             </NavbarGroup>
             <NavbarGroup align={Alignment.RIGHT}>
               {this.props.myCurrencies > 0 ? (
                 <Aux>
-                  <span>добавлять валюту <span role="img" aria-label="right">👉</span> </span>
+                  <span>
+                    добавлять валюту{" "}
+                    <span role="img" aria-label="right">
+                      👉
+                    </span>{" "}
+                  </span>
                   <AddBlock {...this.props} />
                 </Aux>
               ) : (
@@ -59,6 +78,11 @@ class Nav extends PureComponent {
                   text="вернуться к списку"
                 />
               </Link>
+              <Tooltip
+                content="Очистить loacalStorage"
+              >
+                <Button onClick={this.renderRedirect} minimal="true" icon="trash"/>
+              </Tooltip>
             </NavbarGroup>
             <NavbarGroup align={Alignment.RIGHT}>
               <DeleteBlock {...this.props} />
@@ -72,6 +96,11 @@ class Nav extends PureComponent {
           <Navbar>
             <NavbarGroup align={Alignment.LEFT}>
               <NavbarHeading>Мои валюты | default</NavbarHeading>
+              <Tooltip
+                content="Очистить loacalStorage"
+              >
+                <Button onClick={this.renderRedirect} minimal="true" icon="trash"/>
+              </Tooltip>
             </NavbarGroup>
           </Navbar>
         );

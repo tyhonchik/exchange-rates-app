@@ -35,6 +35,45 @@
   margin-top:40px;
 }
 
+.currencyList{
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-gap: 1px;
+  grid: repeat(5, 15rem) / repeat(1, 15rem)
+}
+
+
+@media (min-width:1300px){
+  .currencyList{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 1px;
+    grid: repeat(5, 15rem) / repeat(5, 15rem)
+  }
+}
+
+@media (min-width:992px)  and (max-width:1299px){
+  .currencyList{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 1px;
+    grid: repeat(5, 15rem) / repeat(3, 15rem)
+  }
+}
+
+@media (min-width:600px) and (max-width:991px){
+  .currencyList{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 1px;
+    grid: repeat(5, 15rem) / repeat(2, 15rem)
+  }
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
