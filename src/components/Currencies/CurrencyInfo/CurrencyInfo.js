@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Aux from "../../../hoc";
-import { NonIdealState } from "@blueprintjs/core";
+import { NonIdealState, Spinner } from "@blueprintjs/core";
 
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 
@@ -15,15 +15,17 @@ class CurrencyInfo extends PureComponent {
   }
 
   getTime() {
-    Date.prototype.timeNow = function () {
-      return ((this.getHours() < 10 ? "0" : "") +
+    Date.prototype.timeNow = function() {
+      return (
+        (this.getHours() < 10 ? "0" : "") +
         this.getHours() +
         ":" +
         (this.getMinutes() < 10 ? "0" : "") +
         this.getMinutes() +
         ":" +
         (this.getSeconds() < 10 ? "0" : "") +
-        this.getSeconds());
+        this.getSeconds()
+      );
     };
   }
 
@@ -63,7 +65,10 @@ class CurrencyInfo extends PureComponent {
     );
 
     if (currency != null) {
-      if (!activeCurrency) {
+      if (loading) {
+        return <Spinner className="spinner-custom" />;
+      }
+      if (!activeCurrency && !loading) {
         return (
           <NonIdealState
             style={{ marginTop: "80px" }}
@@ -83,8 +88,13 @@ class CurrencyInfo extends PureComponent {
           .filter(item => item.rate.sell != null)
           .map(item => parseFloat(item.rate.sell));
 
-        activeCurrency.maxBuy = Math.max(...buyArr);
-        activeCurrency.minSell = Math.min(...sellArr);
+        if (buyArr.length > 0) {
+          activeCurrency.maxBuy = Math.max(...buyArr);
+        }
+
+        if (sellArr.length > 0) {
+          activeCurrency.minSell = Math.min(...sellArr);
+        }
 
         const tableCurrencyData = currency.banks.map(item => {
           const outItem = {
@@ -138,7 +148,14 @@ class CurrencyInfo extends PureComponent {
         );
       } else {
         table = (
-          <BootstrapTable striped hover options={{ noDataText: "Список курсов пуст.\r\n Ждем обновления информации от источника 🤞" }}>
+          <BootstrapTable
+            striped
+            hover
+            options={{
+              noDataText:
+                "Список курсов пуст.\r\n Ждем обновления информации от источника 🤞"
+            }}
+          >
             <TableHeaderColumn isKey dataField="name">
               Наименование
             </TableHeaderColumn>
@@ -212,8 +229,6 @@ class CurrencyInfo extends PureComponent {
       </Aux>
     );
   }
-
-  
 }
 
 export default CurrencyInfo;

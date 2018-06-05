@@ -26,6 +26,11 @@
   font-size: large;
 }
 
+.spinner-custom{
+  display: flex!important;
+  margin:30px auto;
+}
+
 .pt-popover .pt-popover-content{
   max-height:200px;
   overflow-y: auto;

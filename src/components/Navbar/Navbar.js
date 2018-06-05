@@ -47,7 +47,7 @@ class Nav extends PureComponent {
     var isChrome = !!window.chrome && !!window.chrome.webstore;
 
     let clearStorageBtn = (
-      <Tooltip content="Очистить loacalStorage">
+      <Tooltip content="Очистить localStorage">
         <Button onClick={this.renderRedirect} minimal="true" icon="trash" />
       </Tooltip>
     );
@@ -109,7 +109,7 @@ class Nav extends PureComponent {
           <Navbar>
             <NavbarGroup align={Alignment.LEFT}>
               <NavbarHeading>Мои валюты | default</NavbarHeading>
-              <Tooltip content="Очистить loacalStorage">
+              <Tooltip content="Очистить localStorage">
                 <Button
                   onClick={this.renderRedirect}
                   minimal="true"

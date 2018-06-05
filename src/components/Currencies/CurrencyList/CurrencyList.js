@@ -15,7 +15,7 @@ class CurrencyList extends Component {
         <NonIdealState
           style={{ marginTop: "80px" }}
           title="Ваш список валют пока пуст"
-          description="Добавьте первую из списка 👇"
+          description="Добавляйте из списка 👇"
           visual="geosearch"
           action={addBlock}
           className="NonIdealState"
