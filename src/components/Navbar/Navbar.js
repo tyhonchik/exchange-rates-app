@@ -22,12 +22,10 @@ import {
 class Nav extends PureComponent {
   componentDidMount() {
     this.props.fetchData();
-    console.log(this.props)
     
   }
 
   renderRedirect = () => {
-    console.log(this.props);
     localStorage.clear();
     return this.props.history.go(`/`);
   };
