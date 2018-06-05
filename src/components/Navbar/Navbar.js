@@ -22,16 +22,39 @@ import {
 class Nav extends PureComponent {
   componentDidMount() {
     this.props.fetchData();
-    
   }
 
   renderRedirect = () => {
     localStorage.clear();
-    return this.props.history.go(`/`);
+    
+    this.props.history.go('/');
   };
 
   render() {
     let nav = null;
+    var isOpera = (!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+
+    // Chrome 1+
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+    let clearStorageBtn = (
+      <Tooltip content="Очистить loacalStorage">
+        <Button onClick={this.renderRedirect} minimal="true" icon="trash" />
+      </Tooltip>
+    );
+
+    if(!isChrome && !isOpera && !isEdge && !isFirefox){
+      clearStorageBtn = null;
+    }
 
     switch (this.props.pageType) {
       case "home":
@@ -39,11 +62,7 @@ class Nav extends PureComponent {
           <Navbar>
             <NavbarGroup align={Alignment.LEFT}>
               <NavbarHeading>Мои валюты</NavbarHeading>
-              <Tooltip
-                content="Очистить loacalStorage"
-              >
-                <Button onClick={this.renderRedirect} minimal="true" icon="trash"/>
-              </Tooltip>
+              {clearStorageBtn}
             </NavbarGroup>
             <NavbarGroup align={Alignment.RIGHT}>
               {this.props.myCurrencies > 0 ? (
@@ -76,11 +95,7 @@ class Nav extends PureComponent {
                   text="вернуться к списку"
                 />
               </Link>
-              <Tooltip
-                content="Очистить loacalStorage"
-              >
-                <Button onClick={this.renderRedirect} minimal="true" icon="trash"/>
-              </Tooltip>
+              {clearStorageBtn}
             </NavbarGroup>
             <NavbarGroup align={Alignment.RIGHT}>
               <DeleteBlock {...this.props} />
@@ -94,10 +109,12 @@ class Nav extends PureComponent {
           <Navbar>
             <NavbarGroup align={Alignment.LEFT}>
               <NavbarHeading>Мои валюты | default</NavbarHeading>
-              <Tooltip
-                content="Очистить loacalStorage"
-              >
-                <Button onClick={this.renderRedirect} minimal="true" icon="trash"/>
+              <Tooltip content="Очистить loacalStorage">
+                <Button
+                  onClick={this.renderRedirect}
+                  minimal="true"
+                  icon="trash"
+                />
               </Tooltip>
             </NavbarGroup>
           </Navbar>
