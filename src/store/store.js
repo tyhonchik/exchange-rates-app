@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
 import { loadState, saveState } from "./localStorage";
 
-export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
+export const history = createBrowserHistory(); //{ basename: process.env.PUBLIC_URL }
 
 //const initialState = rootReducer.INITIAL_STATE;
 
