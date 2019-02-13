@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import Aux from "../../hoc";
 import CurrencyInfo from "../../components/Currencies/CurrencyInfo";
 import Navbar from "../../components/Navbar/Navbar";
-import { connect } from "react-redux";
+
 import {
-  fetchCurrency, fetchCurrencyFailure, fetchCurrencySuccess,
+  fetchCurrency,
+  fetchCurrencyFailure,
+  fetchCurrencySuccess,
 } from "../.././store/actions/actions";
 
 class Info extends Component {
@@ -39,14 +43,14 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCurrency: id => {
       dispatch(fetchCurrency(id))
-        .payload.then(response => {
-          if (!response.ok) {
-            dispatch(fetchCurrencyFailure(response.statusText));
-            throw Error(response.statusText);
-          }
-          return response;
-        })
-        .then(response => response.json())
+        .payload.then(response => response.data)
+        //   if (!response.ok) {
+        //     dispatch(fetchCurrencyFailure(response.statusText));
+        //     throw Error(response.statusText);
+        //   }
+        //   return response;
+        // })
+        // .then(response => response.json())
         .then(item => dispatch(fetchCurrencySuccess(item)))
         .catch(error => dispatch(fetchCurrencyFailure(error)));
     }

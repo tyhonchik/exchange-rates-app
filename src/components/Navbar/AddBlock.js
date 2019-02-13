@@ -43,7 +43,7 @@ class AddBlock extends Component {
         noResults={<MenuItem disabled={true} text="Нет такой валюты" />}
         inputValueRenderer={this.renderInputValue}
         onItemSelect={this.handleValueChange}
-        popoverProps={true}
+        popoverProps={{popoverClassName: 'popover-list'}}
         inputProps={{ placeholder: "Код валюты или страна" }}
       />
     );

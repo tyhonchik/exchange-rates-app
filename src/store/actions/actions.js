@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 //Currency list
 export const FETCH_CURRENCIES = 'FETCH_CURRENCIES';
 export const FETCH_CURRENCIES_SUCCESS = 'FETCH_CURRENCIES_SUCCESS';
@@ -21,16 +23,17 @@ export const DELETE_CURRENCY_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_CURRENCY_FAILURE = 'DELETE_POST_FAILURE';
 export const RESET_DELETED_CURRENCY = 'RESET_DELETED_CURRENCY';
 
-const PROXY_URL = "https://cors2-fearless-parrot.eu-gb.mybluemix.net/";    // IBM Bluemix
-const CURRENCY_LIST_URL = "cash.rbc.ru/cash/json/cash_currencies/";
-const CURRENCY_ITEM_URL = "cash.rbc.ru/cash/json/cash_rates/?city=1&currency=";
+const PROXY_URL = "https://thingproxy.freeboard.io/fetch/"; //"https://cors2-fearless-parrot.eu-gb.mybluemix.net/";    // IBM Bluemix
+const CURRENCY_LIST_URL = "https://cash.rbc.ru/cash/json/cash_currencies/";
+const CURRENCY_ITEM_URL = "https://cash.rbc.ru/cash/json/cash_rates/?city=1&currency=";
 
 export function fetchCurrencies() {
-  const request = fetch(PROXY_URL + CURRENCY_LIST_URL, {
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-      "Content-Type": "application/json"
-    }
+  console.log('azaz13');
+  const request = axios.get(PROXY_URL + CURRENCY_LIST_URL, {
+    // withCredentials: true,
+    // headers: {
+    //   'Access-Control-Allow-Origin': '*'
+    // }
   });
   
   return {
@@ -55,12 +58,7 @@ export function fetchCurrenciesFailure(error) {
 
 
 export function fetchCurrency(id) {
-  const request = fetch(PROXY_URL + CURRENCY_ITEM_URL + id, {
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-      "Content-Type": "application/json"
-    }
-  });
+  const request = axios.get(PROXY_URL + CURRENCY_ITEM_URL + id);
   
   return {
     type: FETCH_CURRENCY,

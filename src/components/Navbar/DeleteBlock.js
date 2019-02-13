@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "@blueprintjs/core";
 import { removeCurrency, addCurrency } from "../../store/actions/actions";
-import { push } from "react-router-redux";
+import { push } from "connected-react-router";
 
 class DeleteBlock extends Component {
   render() {

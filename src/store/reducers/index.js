@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux'
+import { connectRouter } from 'connected-react-router'
 import CurrencyReducer from './reducers';
 
-export default combineReducers({
+export default (history) => combineReducers({
     currs: CurrencyReducer,
-    routerReducer
+    router: connectRouter(history)
 });

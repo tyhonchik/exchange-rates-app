@@ -1,11 +1,12 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
-import createHistory from "history/createBrowserHistory";
+import { routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
+import { createStore, applyMiddleware, compose } from "redux";
+
 import rootReducer from "./reducers";
 import { loadState, saveState } from "./localStorage";
 
-export const history = createHistory({ basename: process.env.PUBLIC_URL });
+export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
 
 //const initialState = rootReducer.INITIAL_STATE;
 
@@ -27,7 +28,7 @@ const composedEnhancers = compose(
 
 const persistedState = loadState();
 const store = createStore(
-  rootReducer,
+  rootReducer(history),
   persistedState, //initialState,
   composedEnhancers
 );

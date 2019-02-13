@@ -48,6 +48,11 @@
   grid: repeat(5, 15rem) / repeat(1, 15rem)
 }
 
+.popover-list {
+  max-height: 250px;
+  overflow: auto;
+}
+
 
 @media (min-width:1300px){
   .currencyList{
