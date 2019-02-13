@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "7f037192fcdef96884010177e90e8c5f",
-    "url": "/exchange-rates-app/static/media/icons-16.7f037192.eot"
+    "revision": "422aba8639312ac889d34200226a5c4e",
+    "url": "/exchange-rates-app/static/media/icons-16.422aba86.woff"
   },
   {
-    "revision": "ff161f8965467fd76e6b",
+    "revision": "1c2414c7d0e884d4cb15",
     "url": "/exchange-rates-app/static/css/main.f081429f.chunk.css"
   },
   {
@@ -20,20 +20,20 @@ self.__precacheManifest = [
     "url": "/exchange-rates-app/static/js/2.0a95f452.chunk.js"
   },
   {
-    "revision": "422aba8639312ac889d34200226a5c4e",
-    "url": "/exchange-rates-app/static/media/icons-16.422aba86.woff"
+    "revision": "7f037192fcdef96884010177e90e8c5f",
+    "url": "/exchange-rates-app/static/media/icons-16.7f037192.eot"
   },
   {
-    "revision": "ff161f8965467fd76e6b",
-    "url": "/exchange-rates-app/static/js/main.ff161f89.chunk.js"
-  },
-  {
-    "revision": "a82b41082b04f774d82317dff6874d14",
-    "url": "/exchange-rates-app/static/media/icons-16.a82b4108.ttf"
+    "revision": "1c2414c7d0e884d4cb15",
+    "url": "/exchange-rates-app/static/js/main.1c2414c7.chunk.js"
   },
   {
     "revision": "f1bd87971a332ecb21b4ac1d19537fa3",
     "url": "/exchange-rates-app/static/media/icons-20.f1bd8797.eot"
+  },
+  {
+    "revision": "a82b41082b04f774d82317dff6874d14",
+    "url": "/exchange-rates-app/static/media/icons-16.a82b4108.ttf"
   },
   {
     "revision": "52f2f35bf3a635ca696e95cc33cf12fa",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/exchange-rates-app/static/css/2.8f570d8b.chunk.css"
   },
   {
-    "revision": "7076abf6fab60f31d1987582d9fcbac4",
+    "revision": "21ff64f283655a8d34388fa7905ce088",
     "url": "/exchange-rates-app/index.html"
   }
 ];
