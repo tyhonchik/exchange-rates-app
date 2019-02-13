@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/exchange-rates-app/precache-manifest.b52324eeeb15f9801aa61c38868ccd23.js"
+  "/exchange-rates-app/precache-manifest.c2dc9e31e88e2133602d27dce5e5e382.js"
 );
 
 workbox.clientsClaim();
