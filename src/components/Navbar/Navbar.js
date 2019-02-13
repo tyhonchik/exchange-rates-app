@@ -140,7 +140,6 @@ const mapDispatchToProps = dispatch => {
     fetchData: () =>
       dispatch(fetchCurrencies())
         .payload.then(response => response.data)
-        //   console.log(response);
         //   if (!response.ok) {
         //     dispatch(fetchCurrenciesFailure(response.statusText));
         //     throw Error(response.statusText);
@@ -148,7 +147,7 @@ const mapDispatchToProps = dispatch => {
         //   return response;
         // })
         // .then(response => response.json())
-        .then(items => {console.log(items); return dispatch(fetchCurrenciesSuccess(items));})
+        .then(items => dispatch(fetchCurrenciesSuccess(items)))
         .catch(error => dispatch(fetchCurrenciesFailure(error)))
   };
 };
