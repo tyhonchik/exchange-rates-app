@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/exchange-rates-app/static/js/main.01b81e80.chunk.js"
   },
   {
-    "revision": "f1bd87971a332ecb21b4ac1d19537fa3",
-    "url": "/exchange-rates-app/static/media/icons-20.f1bd8797.eot"
-  },
-  {
     "revision": "a82b41082b04f774d82317dff6874d14",
     "url": "/exchange-rates-app/static/media/icons-16.a82b4108.ttf"
+  },
+  {
+    "revision": "f1bd87971a332ecb21b4ac1d19537fa3",
+    "url": "/exchange-rates-app/static/media/icons-20.f1bd8797.eot"
   },
   {
     "revision": "52f2f35bf3a635ca696e95cc33cf12fa",
