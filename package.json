@@ -2,7 +2,6 @@
   "name": "exchange-rates-app-v2",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://tyhonchik.github.io/exchange-rates-app/",
   "dependencies": {
     "@blueprintjs/core": "^3.13.0",
     "@blueprintjs/select": "^3.6.1",

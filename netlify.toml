@@ -1,0 +1,16 @@
+## COMMENT: This rule redirects to an external api signing requests with a secret
+[[redirects]]
+  from = "/api/getcurrs"
+  to = "https://cash.rbc.ru/cash/json/cash_currencies/"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"} # COMMENT: add this header to the search request
+  signed = "API_SIGNATURE_TOKEN" # COMMENT: sign each request with the value of this env variable
+
+[[redirects]]
+  from = "/api/getcurrency/*"
+  to = "https://cash.rbc.ru/cash/json/cash_rates/:splat"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"} # COMMENT: add this header to the search request
+  signed = "API_SIGNATURE_TOKEN" # COMMENT: sign each request with the value of this env variable

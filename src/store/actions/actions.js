@@ -28,13 +28,7 @@ const CURRENCY_LIST_URL = "https://cash.rbc.ru/cash/json/cash_currencies/";
 const CURRENCY_ITEM_URL = "https://cash.rbc.ru/cash/json/cash_rates/?city=1&currency=";
 
 export function fetchCurrencies() {
-  console.log('azaz13');
-  const request = axios.get(PROXY_URL + CURRENCY_LIST_URL, {
-    // withCredentials: true,
-    // headers: {
-    //   'Access-Control-Allow-Origin': '*'
-    // }
-  });
+  const request = axios.get("/api/getcurrs");
   
   return {
     type: FETCH_CURRENCIES,
@@ -58,7 +52,7 @@ export function fetchCurrenciesFailure(error) {
 
 
 export function fetchCurrency(id) {
-  const request = axios.get(PROXY_URL + CURRENCY_ITEM_URL + id);
+  const request = axios.get("/api/getcurrency/?city=1&currency="+ id);
   
   return {
     type: FETCH_CURRENCY,
